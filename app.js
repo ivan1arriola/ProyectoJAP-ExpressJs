@@ -10,8 +10,61 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 
+// Devuelve JSON la informacion de la api y las rutas
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+   res.json({
+         "api": "ProyectoJAP",
+            "version": "1.0.0",
+            "routes": [
+                {
+                    "route": "/",
+                    "method": "GET",
+                    "description": "Devuelve JSON la informacion de la api y las rutas"
+                },
+                {
+                    "route": "/cart",
+                    "method": "GET",
+                    "description": "Devuelve JSON la informacion del carrito"
+                },
+                {
+                    "route": "/products/:id",
+                    "method": "GET",
+                    "description": "Devuelve JSON la informacion del producto"
+                },
+                {
+                    "route": "/cats",
+                    "method": "GET",
+                    "description": "Devuelve JSON la informacion de las categorias"
+                },
+                {
+                    "route": "/cats_products/:id",
+                    "method": "GET",
+                    "description": "Devuelve JSON la informacion de los productos de una categoria"
+                },
+                {
+                    "route": "/products_comments/:id",
+                    "method": "GET",
+                    "description": "Devuelve JSON la informacion de los comentarios de un producto"
+                },
+                {
+                    "route": "/sell",
+                    "method": "GET",
+                    "description": "Devuelve JSON con mensaje de publicacion exitosa"
+                },
+                {
+                    "route": "/user_cart/:id",
+                    "method": "GET",
+                    "description": "Devuelve JSON la informacion del carrito de un usuario"
+                },
+                {
+                    "route": "/user",
+                    "method": "GET",
+                    "description": "Devuelve JSON la informacion del usuario"
+                }
+            ]
+        }
+    );
+    
 });
 
 // cart routes
@@ -44,7 +97,7 @@ app.get('/products_comments/:id', (req, res) => {
 
 // sell routes
 app.get('/sell', (req, res) => {
-    res.sendFile("sell.json", { root:"./data/sell" });
+    res.sendFile("publish.json", { root:"./data/sell" });
 });
 
 // user_cart routes
